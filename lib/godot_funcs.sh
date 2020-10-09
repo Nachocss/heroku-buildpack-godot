@@ -5,8 +5,7 @@ function download_godot_headless() {
     output_section "Downloading Godot Headless Executable..."
     curl -s $GODOT_HEADLESS_URL -o godot-headless.zip || exit 1
     unzip -o godot-headless.zip
-    cp Godot_v3.2.2-stable_mono_linux_headless_64 $CACHE_DIR/godot_headless.64
-    touch "$CACHE_DIR/._sc_"
+    touch "._sc_"
   else
     output_section "Using cached Godot Headless executable"
   fi
@@ -35,5 +34,5 @@ function export_godot_project() {
   output_line "Target: '$BUILD_DIR/dist/index.html'"
 
   mkdir -p $OUTPUT_DEST
-  $CACHE_DIR/godot_headless.64 --path "$BUILD_DIR" --export-debug HTML5 "$OUTPUT_DEST/index.html" || exit 1
+  Godot_v3.2.2-stable_mono_linux_headless_64 --path "$BUILD_DIR" --export-debug HTML5 "$OUTPUT_DEST/index.html" || exit 1
 }
