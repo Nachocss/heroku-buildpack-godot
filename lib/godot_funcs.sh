@@ -15,7 +15,7 @@ function download_godot_headless() {
 
 function download_godot_templates() {
   GODOT_TEMPLATES_URL=https://downloads.tuxfamily.org/godotengine/3.2.2/mono/Godot_v3.2.2-stable_mono_export_templates.tpz
-  TEMPLATES_DEST="$CACHE_DIR/editor_data/templates/3.2.2.stable"
+  TEMPLATES_DEST="$CACHE_DIR/editor_data/templates/3.2.2.stable.mono"
 
   if [ ! -f $TEMPLATES_DEST/webassembly_debug.zip ]; then
     output_section "Downloading Godot Templates..."
@@ -36,5 +36,5 @@ function export_godot_project() {
   output_line "Target: '$BUILD_DIR/dist/index.html'"
 
   mkdir -p $OUTPUT_DEST
-  $CACHE_DIR/godot_headless.64 --path "$BUILD_DIR" --export-debug HTML5 "$OUTPUT_DEST/index.html" || exit 1
+  $CACHE_DIR/godot_headless.64 --path "$BUILD_DIR" --export-debug "HTML5" "$OUTPUT_DEST/index.html" || exit 1
 }
